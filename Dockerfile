@@ -1,3 +1,11 @@
 FROM php:8.0-apache
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN apt-get update && apt-get upgrade -y
+
+COPY src/ /var/www/html/
+
+# Set the working directory
+WORKDIR /var/www/html
+
+# Expose port 80 for web traffic
+EXPOSE 80
